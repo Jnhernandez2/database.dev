@@ -26,9 +26,30 @@ extract(pageController());
 <body>
 <div class="container">
     <div class="row">
-        <header class="page-header">
-            <h1>Teams</h1>
-        </header>
+        <div class="col-md-8">
+            <header class="page-header">
+                <h1>Teams</h1>
+            </header>
+        </div>
+        <div class="col-md-4" style="padding-top: 3.5em">
+            <form class="form-inline" method="get">
+                <div class="form-group">
+                    <input
+                        type="text"
+                        class="form-control"
+                        id="team"
+                        name="team_or_stadium"
+                        placeholder="Team or Stadium">
+                </div>
+                <button type="submit" class="btn btn-default">
+                    <span class="glyphicon glyphicon-search" aria-hidden="true">
+                    </span>
+                    Search
+                </button>
+            </form>
+        </div>
+    </div>
+    <div class="row">
         <form method="post" action="delete-teams.php">
             <table class="table table-striped table-hover table-bordered">
                 <thead>
@@ -41,7 +62,6 @@ extract(pageController());
                 <tbody>
                 <tr>
                     <td>
-                        <!-- If you use brackets at the end of a name the values are sent as array elements -->
                         <input type="checkbox" name="teams[]" value="1">
                     </td>
                     <td>
@@ -53,7 +73,6 @@ extract(pageController());
                 </tr>
                 <tr>
                     <td>
-                        <!-- You will be able to delete more than one team -->
                         <input type="checkbox" name="teams[]" value="2">
                     </td>
                     <td>
@@ -65,10 +84,17 @@ extract(pageController());
                 </tr>
                 </tbody>
             </table>
-            <input type="submit" value="Delete" class="btn btn-danger">
+            <button type="submit" class="btn btn-danger">
+                <span class="glyphicon glyphicon-trash"></span>
+                Delete
+            </button>
+            <a href="new-team.php" class="btn btn-primary">
+                <span class="glyphicon glyphicon-plus"></span>
+                Add a new team
+            </a>
         </form>
     </div>
-</div>
+</div
 <?php include '../partials/scripts.phtml' ?>
 </body>
 </html>
