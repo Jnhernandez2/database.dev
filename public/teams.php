@@ -9,6 +9,8 @@ function pageController()
     if (Input::has('team_or_stadium')) {
     // Concatenate the WHERE clause that filters the teams by similar names
     // or stadiums
+        $teamOrStadium = Input::get('team_or_stadium');
+        $sql .= " WHERE name LIKE '%$teamOrStadium%'OR stadium LIKE '%$teamOrStadium%'";
 }
     var_dump($sql);
 
