@@ -11,3 +11,25 @@ CREATE TABLE teams (
   league  ENUM ('national', 'american'),
   PRIMARY KEY (id)
 );
+
+CREATE TABLE players (
+  id       INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  team_id  INT UNSIGNED NOT NULL,
+  name     VARCHAR(255) NOT NULL,
+  position VARCHAR(50),
+  PRIMARY KEY (id),
+  FOREIGN KEY (team_id) REFERENCES teams (id)
+);
+
+CREATE TABLE games (
+  id       INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  visitor_team_id   INT UNSIGNED NOT NULL,
+  local_team_id     INT UNSIGNED NOT NULL,
+  visitor_team_runs INT UNSIGNED NOT NULL,
+  local_team_runs   INT UNSIGNED NOT NULL,
+  game_date         DATETIME     NOT NULL,
+  PRIMARY KEY (id),
+  FOREIGN KEY (visitor_team_id) REFERENCES teams (id),
+  FOREIGN KEY (local_team_id) REFERENCES teams (id)
+
+);
